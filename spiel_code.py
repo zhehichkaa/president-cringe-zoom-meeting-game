@@ -8,16 +8,24 @@ pygame.font.init()
 
 #text_surface = text_font.render('text', False, (225, 225, 225))
 
-position = 460, 300
-size = 400, 200
-button_rect = pygame.Rect(position, size)
-
-
-#SCREEN :
+#-------SCREEN--------------------------------------------------
 screen_width = 1360
-screen_height = 850
+screen_height = 800
 screen = pygame.display.set_mode((screen_width, screen_height))
-screen.fill((189, 214, 240))
+screen.fill((255, 255, 255))
+
+#............ TASTEN .................................................
+
+#-------LEAVE MEETING TASTE------------------------------------
+button_width = 200
+button_height = 50
+button_image = pygame.image.load("Leave Meeting Taste.png")
+button_image = pygame.transform.scale(button_image, (button_width, button_height))
+button_position = (screen_width - button_width, screen_height - button_height)
+button_rect = button_image.get_rect()
+button_rect.topleft = button_position
+#--------------------------------------------------------------
+#......................................................................
 
 clock = pygame.time.Clock()
 
@@ -32,13 +40,8 @@ while game_on:
             if button_rect.collidepoint(event.pos):
                 game_on = False
                
-    pygame.draw.rect(screen, (0, 9, 9), button_rect)
-    #pygame.draw.rect(screen, (214, 114, 212), rect)
-    #screen.blit(button, button_position)
-    #screen.blit(text_surface, (25,200))
-                    
+    screen.blit(button_image, (button_position))
     pygame.display.flip()
-    #pygame.display.update()
     
 sys.exit()
 
