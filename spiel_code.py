@@ -8,8 +8,8 @@ pygame.font.init()
 
 #text_surface = text_font.render('text', False, (225, 225, 225))
 
-position = 50, 50
-size = 50, 50
+position = 460, 300
+size = 400, 200
 button_rect = pygame.Rect(position, size)
 
 
@@ -17,21 +17,21 @@ button_rect = pygame.Rect(position, size)
 screen_width = 1360
 screen_height = 850
 screen = pygame.display.set_mode((screen_width, screen_height))
-
-
+screen.fill((189, 214, 240))
 
 clock = pygame.time.Clock()
 
-while 1:
+game_on = True
+while game_on:
     clock.tick(60)
     for event in pygame.event.get():
-        if event.type == pygame.QUIT: sys.exit()
+        print(event.type)
+        if event.type == pygame.QUIT:
+            game_on = False
         elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             if button_rect.collidepoint(event.pos):
-                game_on = True
+                game_on = False
                
-    screen.fill((176, 111, 171))
-   
     pygame.draw.rect(screen, (0, 9, 9), button_rect)
     #pygame.draw.rect(screen, (214, 114, 212), rect)
     #screen.blit(button, button_position)
@@ -39,4 +39,7 @@ while 1:
                     
     pygame.display.flip()
     #pygame.display.update()
+    
+sys.exit()
+
 
