@@ -25,6 +25,10 @@ button_position = (screen_width - button_width, screen_height - button_height)
 button_rect = button_image.get_rect()
 button_rect.topleft = button_position
 #--------------------------------------------------------------
+
+#-------KAMRA_AUS/AUF------------------------------------------
+
+#--------------------------------------------------------------
 #......................................................................
 
 clock = pygame.time.Clock()
