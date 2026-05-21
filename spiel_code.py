@@ -26,18 +26,26 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 
 #................... TASTEN .................................................
 leave_button = Button("Leave Meeting Taste.png", 200, 50, screen_width - 200, screen_height - 50)
-chat_button =  Button("Chat.png", 150, 50, 450, 750) 
+chat_button =  Button("Chat.png", 150, 50, 450, 750)
+camera_button = Button("Camera.png", 140, 70, 100, 740)
 
 chatpanel_width = 500
 chatpanel_height = 700
 chatpanel = pygame.image.load("chatpanel.png")
 chatpanel = pygame.transform.scale(chatpanel, (chatpanel_width, chatpanel_height))
 chatpanel_position = (200, 70)
+
+SUPERMEGASLAYRAT_width = 1360
+SUPERMEGASLAYRAT_height = 800
+SUPERMEGASLAYRAT = pygame.image.load("SUPER-MEGA-SLAY-RAT.jfif")
+SUPERMEGASLAYRAT = pygame.transform.scale(SUPERMEGASLAYRAT, (SUPERMEGASLAYRAT_width, SUPERMEGASLAYRAT_height))
+SUPERMEGASLAYRAT_position = (0, 0)
 #......................................................................
 
 clock = pygame.time.Clock()
 
 show_chat_panel = False
+show_SUPERMEGASLAYRAT = False
 
 game_on = True
 while game_on:
@@ -51,14 +59,20 @@ while game_on:
                 game_on = False
             if chat_button.rect.collidepoint(event.pos):
                 show_chat_panel = not show_chat_panel
+            if camera_button.rect.collidepoint(event.pos):
+                show_SUPERMEGASLAYRAT = not show_SUPERMEGASLAYRAT                        
                 
 #.............. TASTEN EINZEIGEN .......................
     screen.fill((0, 0, 0))
                 
     if (show_chat_panel):
         screen.blit(chatpanel, (chatpanel_position))
+    if (show_SUPERMEGASLAYRAT):
+        screen.blit(SUPERMEGASLAYRAT, SUPERMEGASLAYRAT_position)
     chat_button.draw(screen)
     leave_button.draw(screen)
+    camera_button.draw(screen)
+    
     
     pygame.display.flip()
     
